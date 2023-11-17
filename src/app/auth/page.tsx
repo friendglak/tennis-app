@@ -10,7 +10,8 @@ export default async function page() {
     return redirect("/dashboard");
   }
   return (
-    <div className="flex items-center justify-center h-screen">
+    <div className="flex gap-y-10 items-center justify-center h-screen flex-col">
+      <h1 className="text-center font-bold text-2xl">Tennis League 🎾</h1>
       <AuthForm />
     </div>
   );
