@@ -1,6 +1,7 @@
 "use server";
 
 import { createSupbaseServerClient } from "@/lib/supabase/server";
+import { Provider } from "@supabase/supabase-js";
 import { redirect } from "next/navigation";
 
 export async function signUpWithEmailAndPassword(data: {
@@ -21,6 +22,12 @@ export async function loginWithEmailAndPassword(data: {
   const supabase = await createSupbaseServerClient();
 
   const result = await supabase.auth.signInWithPassword(data);
+  return JSON.stringify(result);
+}
+
+export async function loginWithOuthProvider(data: { provider: Provider }) {
+  const supabase = await createSupbaseServerClient();
+  const result = await supabase.auth.signInWithOAuth(data);
   return JSON.stringify(result);
 }
 
