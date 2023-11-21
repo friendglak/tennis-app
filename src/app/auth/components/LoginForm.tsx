@@ -63,57 +63,52 @@ export default function AuthForm() {
   }
 
   return (
-    <div className="w-96">
-      <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          className="w-full space-y-6"
-        >
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email</FormLabel>
-                <FormControl>
-                  <Input placeholder="example@gmail.com" {...field} />
-                </FormControl>
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-6">
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input placeholder="example@gmail.com" {...field} />
+              </FormControl>
 
-                <FormMessage />
-              </FormItem>
-            )}
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="password"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Password</FormLabel>
+              <FormControl>
+                <Input placeholder="******" {...field} type="password" />
+              </FormControl>
+              <FormDescription>
+                {"Contact your admin if you forgot your password"}
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button
+          type="submit"
+          variant="outline"
+          className="w-full flex items-center gap-2"
+        >
+          Login{" "}
+          <AiOutlineLoading3Quarters
+            className={cn("animate-spin", {
+              hidden: true,
+            })}
           />
-          <FormField
-            control={form.control}
-            name="password"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Password</FormLabel>
-                <FormControl>
-                  <Input placeholder="******" {...field} type="password" />
-                </FormControl>
-                <FormDescription>
-                  {"Contact your admin if you forgot your password"}
-                </FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <Button
-            type="submit"
-            variant="outline"
-            className="w-full flex items-center gap-2"
-          >
-            Login{" "}
-            <AiOutlineLoading3Quarters
-              className={cn("animate-spin", {
-                hidden: true,
-              })}
-            />
-          </Button>
-        </form>
-        <OAuthForm />
-      </Form>
-    </div>
+        </Button>
+      </form>
+      <OAuthForm />
+    </Form>
   );
 }

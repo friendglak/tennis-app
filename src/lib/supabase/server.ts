@@ -1,7 +1,8 @@
 import { createServerClient, type CookieOptions } from "@supabase/ssr";
 import { cookies } from "next/headers";
+import { createClient } from "@supabase/supabase-js";
 
-export async function createSupbaseServerClientReadOnly() {
+export async function createSupabaseServerClientReadOnly() {
   const cookieStore = cookies();
 
   return createServerClient(
@@ -17,7 +18,7 @@ export async function createSupbaseServerClientReadOnly() {
   );
 }
 
-export async function createSupbaseServerClient() {
+export async function createSupabaseServerClient() {
   const cookieStore = cookies();
 
   return createServerClient(
@@ -34,6 +35,19 @@ export async function createSupbaseServerClient() {
         remove(name: string, options: CookieOptions) {
           cookieStore.set({ name, value: "", ...options });
         },
+      },
+    }
+  );
+}
+
+export async function createSupabaseAdmin() {
+  return createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PRIVATE_SUPABASE_SERVICE_ROLE!,
+    {
+      auth: {
+        autoRefreshToken: false,
+        persistSession: false,
       },
     }
   );
