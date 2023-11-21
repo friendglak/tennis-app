@@ -17,8 +17,8 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
-        "graident-dark":
-          "radial-gradient(76.33% 76.59% at 50.15% 6.06%, #1A1A1A 0%, rgba(26, 26, 26, 0.38) 100%)",
+        "gradient-dark":
+          "radial-gradient(76.33% 76.59% at 50.15% 6.06%, #030610  0%, rgba(3, 6, 16) 100%)",
       },
       colors: {
         "dark-primary": "#1E2028",
